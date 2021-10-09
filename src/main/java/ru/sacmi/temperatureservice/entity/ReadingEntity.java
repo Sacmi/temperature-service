@@ -1,21 +1,21 @@
 package ru.sacmi.temperatureservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
-@Table(name = "in_month_entity")
+@Table(name = "reading_entity")
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
-public class InMonthEntity implements Serializable {
+@AllArgsConstructor
+@Builder
+public class ReadingEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,5 +30,5 @@ public class InMonthEntity implements Serializable {
     Float temperature;
 
     @Column(nullable = false)
-    LocalDate date = LocalDate.now();
+    final Instant timestamp = Instant.now();
 }

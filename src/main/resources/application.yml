@@ -2,16 +2,18 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url:
+    username:
+    password:
 
   jpa:
     hibernate:
       ddl-auto: update
-server:
-  port: ${PORT}
+
+  redis:
+    host:
+    port:
 
 firebase:
   cloud-messaging:
-    server-key: ${FCM_SERVER_KEY}
+    server-key:

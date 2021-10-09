@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Table(name = "token_entity")
 @Entity
@@ -27,5 +27,5 @@ public class PushEntity implements Serializable {
     String token;
 
     @Column(nullable = false)
-    final LocalDateTime createdAt = LocalDateTime.now();
+    final Instant createdAt = Instant.now();
 }

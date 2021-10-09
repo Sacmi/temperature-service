@@ -4,7 +4,9 @@ import java.util.Collection;
 
 public interface NotificationService {
 
-    void send(String target, String title, String message);
+    void send(String title, String message, String target);
 
-    void sendMultiple(Collection<String> targets, String title, String message);
+//    void broadcast(String title, String message, Collection<String> targets);
+
+    String getBroadcastTarget();
 }
