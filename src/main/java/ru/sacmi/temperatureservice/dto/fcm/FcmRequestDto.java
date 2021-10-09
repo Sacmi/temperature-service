@@ -3,6 +3,9 @@ package ru.sacmi.temperatureservice.dto.fcm;
 
 public class FcmRequestDto {
 
+    public FcmNotificationDto notification;
+    public String to;
+
     public static FcmRequestDto create(String token, String title, String body) {
         FcmNotificationDto fcmNotificationDto = new FcmNotificationDto();
         fcmNotificationDto.title = title;
@@ -14,9 +17,4 @@ public class FcmRequestDto {
 
         return fcmRequestDto;
     }
-
-
-
-    public FcmNotificationDto notification;
-    public String to;
 }

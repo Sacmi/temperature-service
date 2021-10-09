@@ -1,9 +1,8 @@
 package ru.sacmi.temperatureservice.service;
 
+import java.util.Collection;
 import ru.sacmi.temperatureservice.entity.SensorEntity;
 import ru.sacmi.temperatureservice.exception.NotFoundException;
-
-import java.util.Collection;
 
 public interface SensorService {
 

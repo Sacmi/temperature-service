@@ -1,6 +1,5 @@
 package ru.sacmi.temperatureservice.service.impl;
 
-import com.sun.istack.Nullable;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +12,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import ru.sacmi.temperatureservice.dto.fcm.FcmRequestDto;
 import ru.sacmi.temperatureservice.service.NotificationService;
-
-import java.util.Collection;
 
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -34,9 +31,9 @@ public class FcmNotificationServiceImpl implements NotificationService {
     @Override
     public void send(String title, String message, String target) {
         ResponseEntity<Void> response = client.post()
-                .header(HttpHeaders.AUTHORIZATION, getAuthorization())
-                .body(Mono.just(FcmRequestDto.create(target, title, message)), FcmRequestDto.class)
-                .retrieve().toBodilessEntity().block();
+            .header(HttpHeaders.AUTHORIZATION, getAuthorization())
+            .body(Mono.just(FcmRequestDto.create(target, title, message)), FcmRequestDto.class)
+            .retrieve().toBodilessEntity().block();
 
         assert response != null;
         log.info("FCM Status is " + response.getStatusCodeValue());

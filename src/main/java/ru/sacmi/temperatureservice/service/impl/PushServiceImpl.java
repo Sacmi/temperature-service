@@ -1,6 +1,8 @@
 package ru.sacmi.temperatureservice.service.impl;
 
 import com.github.sonus21.rqueue.core.RqueueMessageEnqueuer;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -12,9 +14,6 @@ import ru.sacmi.temperatureservice.repository.PushRepository;
 import ru.sacmi.temperatureservice.service.PushService;
 import ru.sacmi.temperatureservice.service.SensorService;
 import ru.sacmi.temperatureservice.task.PushTask;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -58,7 +57,7 @@ public class PushServiceImpl implements PushService {
                     .message(message)
                     .target(token)
                     .build());
-          }
+        }
     }
 
     private void createTask(PushTask pushTask) {

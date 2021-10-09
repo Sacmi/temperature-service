@@ -28,16 +28,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 public class SensorEntity implements Serializable {
 
+    @Column(nullable = false)
+    final Instant createdAt = Instant.now();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     Long id;
-
-
-    @Column(nullable = false)
-    final Instant createdAt = Instant.now();
-
-
     @Column(nullable = false)
     String label;
 

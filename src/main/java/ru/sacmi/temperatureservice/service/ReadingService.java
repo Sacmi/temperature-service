@@ -1,10 +1,9 @@
 package ru.sacmi.temperatureservice.service;
 
-import ru.sacmi.temperatureservice.entity.ReadingEntity;
-import ru.sacmi.temperatureservice.exception.NotFoundException;
-
 import java.time.Instant;
 import java.util.Collection;
+import ru.sacmi.temperatureservice.entity.ReadingEntity;
+import ru.sacmi.temperatureservice.exception.NotFoundException;
 
 public interface ReadingService {
 
@@ -14,6 +13,7 @@ public interface ReadingService {
     Collection<ReadingEntity> getTemperaturesBySensorId(Long sensorId)
         throws NotFoundException;
 
-    Collection<ReadingEntity> getTemperaturesBySensorIdAndFilter(Long sensorId, Instant from, Instant to)
-            throws NotFoundException;
+    Collection<ReadingEntity> getTemperaturesBySensorIdAndFilter(Long sensorId, Instant from,
+        Instant to)
+        throws NotFoundException;
 }

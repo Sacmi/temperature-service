@@ -1,11 +1,10 @@
 package ru.sacmi.temperatureservice.dto.reading;
 
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDateTime;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
