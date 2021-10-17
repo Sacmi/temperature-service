@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: secret_password
+
+  redis:
+    image: redis:alpine
+
+  server:
+    image: sacmi5/tempservice
+    environment:
+      FCM_SERVER_KEY: test
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-data:
