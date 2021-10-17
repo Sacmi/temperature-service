@@ -9,6 +9,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+  redis:
+    url: ${REDIS_TLS_URL}
 server:
   port: ${PORT}
 firebase:
