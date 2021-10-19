@@ -34,7 +34,7 @@ public class PushServiceImpl implements PushService {
 
     @Override
     public void sendMessage(Long sensorId, String message) throws NotFoundException {
-        final String broadcast = "/topic/main";
+        final String broadcast = "/topics/main";
 
         SensorEntity sensor = sensorService.getSensor(sensorId);
         List<PushEntity> targets = pushRepository.findAll();
