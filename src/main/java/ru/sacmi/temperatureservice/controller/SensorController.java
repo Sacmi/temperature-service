@@ -1,20 +1,18 @@
 package ru.sacmi.temperatureservice.controller;
 
-import java.util.Collection;
-import javax.validation.constraints.NotEmpty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.sacmi.temperatureservice.dto.sensor.SensorUpdateDto;
 import ru.sacmi.temperatureservice.entity.SensorEntity;
 import ru.sacmi.temperatureservice.exception.NotFoundException;
 import ru.sacmi.temperatureservice.service.SensorService;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import java.util.Collection;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor
@@ -35,9 +33,9 @@ public class SensorController {
     }
 
     @PostMapping("/{id}")
-    public void changeSensorLabel(@PathVariable long id, @NotEmpty @RequestParam String label)
+    public ResponseEntity<SensorEntity> changeSensorLabel(@PathVariable long id, @RequestBody @Valid SensorUpdateDto updateDto)
         throws NotFoundException {
-        sensorService.changeSensorName(id, label);
+        return ResponseEntity.ok(sensorService.updateSensor(id, updateDto));
     }
 
     @PostMapping("/")

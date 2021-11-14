@@ -14,6 +14,8 @@ import ru.sacmi.temperatureservice.entity.PushEntity;
 import ru.sacmi.temperatureservice.exception.NotFoundException;
 import ru.sacmi.temperatureservice.service.PushService;
 
+import javax.validation.Valid;
+
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor
 @RestController()
@@ -23,7 +25,7 @@ public class PushController {
     PushService pushService;
 
     @PostMapping
-    public ResponseEntity<String> sendPush(@RequestBody PushDto pushDto) throws NotFoundException {
+    public ResponseEntity<String> sendPush(@RequestBody @Valid PushDto pushDto) throws NotFoundException {
         pushService.sendMessage(pushDto.getId(), pushDto.getMessage());
         return ResponseEntity.ok("fine");
     }
