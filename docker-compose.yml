@@ -2,14 +2,14 @@ version: "3.8"
 
 services:
   postgres:
-    image: postgres:alpine
+    image: postgres
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: secret_password
 
   redis:
-    image: redis:alpine
+    image: redis
 
   server:
     image: sacmi5/tempservice
